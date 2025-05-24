@@ -1,0 +1,225 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --oq:white;
+    --qizil:rgb(255, 0, 0);
+    --kuk:blue;
+    --qora:black;
+    --tuq-yashil:green;
+    --sariq:rgb(203, 203, 47);
+    --tuq-sariq:orange;
+    --tuq-kuk:rgb(72, 150, 252);
+    --yashil:rgb(84, 255, 37);
+    --orqa-rang-kukimtil:rgb(13, 13, 82);
+    --pushti:rgb(255, 75, 222);
+    --och-qzil:rgba(250, 114, 114, 0.879) ;
+}
+
+.container{
+    width: 100%;
+    max-width: 1240px;
+    margin: auto;
+    height: 100%;
+}
+
+.header{
+    width: 100%;
+    height: 50px;
+    background-color:var(--orqa-rang-kukimtil);
+}
+
+.bosh-qismi{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding-top: 5px;
+}
+
+
+
+.left{
+    font-size: 35px;
+    color: var(--oq);
+    align-items: center;
+}
+
+.left-class{
+    color:var(--tuq-kuk) ;
+}
+
+.right{
+    display:flex;
+    align-items: center;
+}
+
+.homlar{
+    display: flex;
+    gap: 50px;
+    align-items: cneter;
+}
+
+.homlar a{
+    color: var(--oq);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.homlar a:hover{
+    color: var(--kuk);
+}
+
+.birinchi-tugmacha{
+    display: felx;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    background-color:var(--tuq-yashil);
+    border: none;
+    color: var(--oq);
+  
+}
+
+.birinchi-tugmacha a{
+    text-decoration: none;
+    color: var(--oq);
+    font-size: 17px;
+}
+
+.birinchi-tugmacha:hover{
+    background-color: var(--yashil);
+}
+
+.tugmalar{
+    padding-left: 50px;
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.ikkinchi-bulim{
+    background-color: var(--orqa-rang-kukimtil);
+    width: 100%;
+    height: 100%;
+}
+
+.mani-qsim{
+    display: flex;
+}
+
+.left-qsim{
+    flex: 1;
+}
+
+.right-qsim{
+    flex: 1;
+}
+
+
+.rasmlar-bu img{
+    width: 300px;
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+.rasmlar-u{
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+}
+
+
+.matin{
+    padding-top: 100px;
+}
+
+.matin p{
+    font-size: 90px;
+    color: var(--oq);
+}
+
+.Design{
+    color: var(--tuq-kuk);
+}
+
+.buttons{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: var(--tuq-kuk);
+    border: none;
+    margin-top: 20px;
+}
+
+.buttons:hover{
+    background-color: var(--kuk);
+}
+
+.buttons a{
+    font-size: 20px;
+    color: var(--oq);
+    text-decoration: none;
+}
+
+.logotef{
+    display: flex;
+    gap: 20px;
+    margin-top: 150px;
+}
+
+.link1,
+.link2,
+.link3,
+.link4{
+    flex: 1;
+    height: 75px;
+    background-color: var(--tuq-kuk);
+    border-radius: 12px;
+    font-size: 25px;
+    color: var(--qora);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link1:hover{
+    background-color: var(--kuk);
+}
+
+.link2{
+    background-color: var(--sariq);
+}
+.link2:hover{
+    background-color: var(--tuq-sariq);
+}
+
+.link3{
+    background-color: var(--pushti);
+}
+
+.link3:hover{
+    background-color: rgb(180, 11, 121);
+}
+
+.link4{
+    background-color: var(--och-qzil);
+}
+
+.link4:hover{
+    background-color:var(--qizil);
+}
+
+
+
+.link1 a,
+.link2 a,
+.link3 a,
+.link4 a{
+    color: var(--oq);
+    text-decoration: none;
+}
+
