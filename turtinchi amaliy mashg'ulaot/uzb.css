@@ -296,6 +296,7 @@ rasim-va-matin1 img {
     color: var(--oq);
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .uzgaruvchi-tugmacha:hover {
