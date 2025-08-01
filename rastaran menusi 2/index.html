@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navoiy Restoran - Toshkent</title>
+    <link rel="stylesheet" href="stayle.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    <header class="header" data-aos="fade-down">
+        <div class="container">
+            <div class="logo">
+                <h1>Navoiy Restoran</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Bosh Sahifa</a></li>
+                    <li><a href="#menu">Menyu</a></li>
+                    <li><a href="#gallery">Galereya</a></li>
+                    <li><a href="#about">Haqimizda</a></li>
+                    <li><a href="#reservation">Rezervatsiya</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <section id="home" class="hero" data-aos="fade-up">
+        <div class="hero-content">
+            <h1 data-aos="zoom-in">Navoiy Restoranga Xush Kelibsiz</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Toshkentning eng muhtasham taom maskani, o‘zbekona va xalqaro taomlar</p>
+            <a href="#menu" class="btn" data-aos="fade-up" data-aos-delay="400">Menyuni Ko‘rish</a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 data-aos="fade-up">Bizning Menyu</h2>
+            <div class="menu-filters" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active" data-filter="all">Hammasi</button>
+                <button class="filter-btn" data-filter="salatlar">Salatlar</button>
+                <button class="filter-btn" data-filter="asosiy">Asosiy Taomlar</button>
+                <button class="filter-btn" data-filter="desertlar">Desertlar</button>
+                <button class="filter-btn" data-filter="ichimliklar">Ichimliklar</button>
+            </div>
+            <div class="menu-grid">
+                <article class="menu-item salatlar" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Sezar Salati">
+                    <h3>Sezar Salati</h3>
+                    <p>Yangilangan salat, kurka go‘shti va maxsus sous</p>
+                    <span class="price">45,000 UZS</span>
+                </article>
+                <article class="menu-item salatlar" data-aos="fade-up" data-aos-delay="150">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999" alt="Yunon Salati">
+                    <h3>Yunon Salati</h3>
+                    <p>Zaytun, feta pishloqi va yangi sabzavotlar</p>
+                    <span class="price">40,000 UZS</span>
+                </article>
+                <article class="menu-item asosiy" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c2a30f8d60" alt="Klassik Burger">
+                    <h3>Klassik Burger</h3>
+                    <p>Mol go‘shti, pishloq, pomidor va maxsus sous</p>
+                    <span class="price">60,000 UZS</span>
+                </article>
+                <article class="menu-item asosiy" data-aos="fade-up" data-aos-delay="250">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Steyk">
+                    <h3>Mol Go‘shti Steyk</h3>
+                    <p>Grilda pishirilgan yumshoq steyk, sous bilan</p>
+                    <span class="price">85,000 UZS</span>
+                </article>
+                <article class="menu-item asosiy" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1606851142259-2e3e0c93665a" alt="Shashlik">
+                    <h3>Qo‘y Go‘shti Shashlik</h3>
+                    <p>Grilda pishirilgan shashlik, piyoz bilan</p>
+                    <span class="price">65,000 UZS</span>
+                </article>
+                <article class="menu-item asosiy" data-aos="fade-up" data-aos-delay="350">
+                    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Karbonara Pasta">
+                    <h3>Karbonara Pasta</h3>
+                    <p>Kremli sous, bekon va parmesan pishloqi</p>
+                    <span class="price">55,000 UZS</span>
+                </article>
+                <article class="menu-item asosiy" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a22" alt="Pizza Pepperoni">
+                    <h3>Pepperoni Pizza</h3>
+                    <p>Pepperoni, mozzarella va pomidor sousi</p>
+                    <span class="price">75,000 UZS</span>
+                </article>
+                <article class="menu-item asosiy" data-aos="fade-up" data-aos-delay="450">
+                    <img src="https://images.unsplash.com/photo-1621996346565-e3f7f5a21e05" alt="Lag‘mon">
+                    <h3>O‘zbek Lag‘mon</h3>
+                    <p>Qo‘lda tayyorlangan lag‘mon, go‘sht va sabzavotlar</p>
+                    <span class="price">40,000 UZS</span>
+                </article>
+                <article class="menu-item asosiy" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe" alt="O‘zbek Palov">
+                    <h3>O‘zbek Palov</h3>
+                    <p>An’anaviy o‘zbek palovi, qo‘y go‘shti va sabzi</p>
+                    <span class="price">50,000 UZS</span>
+                </article>
+                <article class="menu-item desertlar" data-aos="fade-up" data-aos-delay="550">
+                    <img src="https://images.unsplash.com/photo-1546069901-d5bfd2cbf745" alt="Tiramisu">
+                    <h3>Tiramisu</h3>
+                    <p>Klassik italyan deserti, kofe va mascarpone</p>
+                    <span class="price">35,000 UZS</span>
+                </article>
+                <article class="menu-item desertlar" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47" alt="Cheesecake">
+                    <h3>Cheesecake</h3>
+                    <p>Kremli pishloqli tort, meva sousi bilan</p>
+                    <span class="price">38,000 UZS</span>
+                </article>
+                <article class="menu-item desertlar" data-aos="fade-up" data-aos-delay="650">
+                    <img src="https://images.unsplash.com/photo-1563729781086-c1d546d6b7a0" alt="Shokoladli Fondan">
+                    <h3>Shokoladli Fondan</h3>
+                    <p>Issiq shokoladli tort, muzqaymoq bilan</p>
+                    <span class="price">42,000 UZS</span>
+                </article>
+                <article class="menu-item ichimliklar" data-aos="fade-up" data-aos-delay="700">
+                    <img src="https://images.unsplash.com/photo-1600555197096-0d41b9f9e1e7" alt="Smoothie">
+                    <h3>Mevah Smoothie</h3>
+                    <p>Yangilangan mevah ichimligi, yogurt bilan</p>
+                    <span class="price">30,000 UZS</span>
+                </article>
+                <article class="menu-item ichimliklar" data-aos="fade-up" data-aos-delay="750">
+                    <img src="https://images.unsplash.com/photo-1513558161049-94f1b3b26b56" alt="Moxito">
+                    <h3>Moxito</h3>
+                    <p>Yalpiz, limon va gazlangan suv bilan</p>
+                    <span class="price">25,000 UZS</span>
+                </article>
+                <article class="menu-item ichimliklar" data-aos="fade-up" data-aos-delay="800">
+                    <img src="https://images.unsplash.com/photo-1508736370701-03d9d9122d99" alt="Kofe">
+                    <h3>Espresso</h3>
+                    <p>Klassik italyan kofesi</p>
+                    <span class="price">20,000 UZS</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 data-aos="fade-up">Galereya</h2>
+            <div class="swiper-container" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4" alt="Restoran ichki ko‘rinishi">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add6" alt="Taomlar">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1514327605112-b887c0e61c0a" alt="Ichimliklar">
+
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae" alt="Restoran muhiti">
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 data-aos="fade-up">Haqimizda</h2>
+            <p data-aos="fade-up" data-aos-delay="200">Navoiy Restoran – Toshkentning yuragida joylashgan, o‘zbekona va xalqaro taomlarning muhtasham uyg‘unligini taqdim etuvchi maskan. Bizning maqsadimiz – har bir mehmonimizga unutilmas taom tajribasi va yuqori darajadagi xizmat ko‘rsatish.</p>
+        </div>
+    </section>
+
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <h2 data-aos="fade-up">Stol Rezervatsiyasi</h2>
+            <form class="reservation-form" data-aos="fade-up" data-aos-delay="200">
+                <input type="text" placeholder="Ismingiz" required data-aos="fade-up" data-aos-delay="300">
+                <input type="tel" placeholder="Telefon raqamingiz" required data-aos="fade-up" data-aos-delay="350">
+                <input type="date" required data-aos="fade-up" data-aos-delay="400">
+                <input type="time" required data-aos="fade-up" data-aos-delay="450">
+                <input type="number" placeholder="Kishilar soni" min="1" required data-aos="fade-up" data-aos-delay="500">
+                <textarea placeholder="Qo‘shimcha xabar" data-aos="fade-up" data-aos-delay="550"></textarea>
+                <button type="submit" class="btn" data-aos="fade-up" data-aos-delay="600">Rezervatsiya Qilish</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer" data-aos="fade-up">
+        <div class="container">
+            <p>© 2025 Navoiy Restoran. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

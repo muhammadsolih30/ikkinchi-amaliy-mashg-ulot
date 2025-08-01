@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloklardan Qochish O'yini</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Scrollni o'chirish */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Sahifaning to'liq balandligini egallash */
+            background-color: #2c3e50; /* To'q ko'k fon */
+            font-family: 'Inter', sans-serif; /* Zamonaviy shrift */
+            color: #ecf0f1; /* Och kulrang matn */
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        canvas {
+            background-color: #34495e; /* To'qroq ko'k fon */
+            display: block;
+            border: 5px solid #f1c40f; /* Sariq chegara */
+            border-radius: 15px; /* Yumaloq burchaklar */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Soyalar */
+            max-width: 90%; /* Kenglikni moslashtirish */
+            height: auto; /* Balandlikni avtomatik sozlash */
+            margin-bottom: 20px;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .game-over-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Yarim shaffof qora fon */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 100; /* Boshqa elementlar ustida turishi uchun */
+            border-radius: 15px; /* Yumaloq burchaklar */
+        }
+
+        .game-over-screen h2 {
+            font-size: 3em;
+            color: #e74c3c; /* Qizil rang */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .game-over-screen p {
+            font-size: 1.5em;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+        .game-over-screen button {
+            background-color: #2ecc71; /* Yashil tugma */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 10px; /* Yumaloq burchaklar */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Silliq o'tish */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Tugma soyasi */
+        }
+
+        .game-over-screen button:hover {
+            background-color: #27ae60; /* Hover holatida to'qroq yashil */
+            transform: translateY(-3px); /* Biroz yuqoriga siljish */
+        }
+
+        .game-over-screen button:active {
+            transform: translateY(0); /* Bosilganda asl holatiga qaytish */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .game-over-screen h2 {
+                font-size: 2em;
+            }
+            .game-over-screen p {
+                font-size: 1.2em;
+            }
+            .game-over-screen button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-info">
+        <div id="scoreDisplay">Ball: 0</div>
+        <div id="highScoreDisplay">Eng Yuqori Ball: 0</div>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="gameOverScreen" class="game-over-screen" style="display: none;">
+        <h2>O'yin Tugadi!</h2>
+        <p id="finalScore"></p>
+        <button id="restartButton">Qayta O'ynash</button>
+    </div>
+
+    <script>
+        // Canvas elementini olish
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // O'yin ma'lumotlarini ko'rsatish elementlari
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const highScoreDisplay = document.getElementById('highScoreDisplay');
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        const finalScoreDisplay = document.getElementById('finalScore');
+        const restartButton = document.getElementById('restartButton');
+
+        // O'yin sozlamalari
+        let player = {
+            x: 0,
+            y: 0,
+            width: 30,
+            height: 30,
+            color: '#3498db' // Moviy rang
+        };
+
+        let blocks = [];
+        let score = 0;
+        let highScore = localStorage.getItem('highScore') || 0; // Eng yuqori ballni saqlash
+        let gameRunning = false;
+        let blockSpeed = 2; // Bloklarning boshlang'ich tezligi
+        let blockSpawnRate = 120; // Bloklar paydo bo'lish tezligi (kadrlar soni)
+        let frameCount = 0;
+
+        // Eng yuqori ballni yangilash
+        highScoreDisplay.textContent = `Eng Yuqori Ball: ${highScore}`;
+
+        // Canvas o'lchamini sozlash funksiyasi
+        function resizeCanvas() {
+            canvas.width = Math.min(window.innerWidth * 0.9, 600); // Ekran kengligining 90% yoki maksimal 600px
+            canvas.height = Math.min(window.innerHeight * 0.7, 400); // Ekran balandligining 70% yoki maksimal 400px
+            player.x = canvas.width / 2 - player.width / 2; // O'yinchini markazga joylashtirish
+            player.y = canvas.height - player.height - 10; // O'yinchini pastga joylashtirish
+        }
+
+        // O'yinni boshlash funksiyasi
+        function startGame() {
+            score = 0;
+            blocks = [];
+            blockSpeed = 2;
+            blockSpawnRate = 120;
+            frameCount = 0;
+            gameRunning = true;
+            gameOverScreen.style.display = 'none'; // Tugash ekranini yashirish
+            scoreDisplay.textContent = `Ball: ${score}`;
+            resizeCanvas(); // O'yin boshlanganda canvas o'lchamini sozlash
+            gameLoop(); // O'yin siklini boshlash
+        }
+
+        // O'yinchi chizish
+        function drawPlayer() {
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+
+        // Blok chizish
+        function drawBlock(block) {
+            ctx.fillStyle = block.color;
+            ctx.fillRect(block.x, block.y, block.width, block.height);
+        }
+
+        // Bloklarni yangilash va chizish
+        function updateBlocks() {
+            // Har spawnRate kadrda yangi blok yaratish
+            if (frameCount % blockSpawnRate === 0) {
+                // Tasodifiy blok kengligi va balandligi
+                const blockWidth = 20 + Math.random() * 40;
+                const blockHeight = 20 + Math.random() * 40;
+                // Tasodifiy rang
+                const randomColor = `hsl(${Math.random() * 360}, 70%, 50%)`;
+
+                blocks.push({
+                    x: Math.random() * (canvas.width - blockWidth), // Tasodifiy X pozitsiyasi
+                    y: -blockHeight, // Ekran tepasidan boshlash
+                    width: blockWidth,
+                    height: blockHeight,
+                    color: randomColor
+                });
+            }
+
+            // Bloklarni harakatlantirish
+            for (let i = 0; i < blocks.length; i++) {
+                blocks[i].y += blockSpeed;
+
+                // Agar blok ekrandan tashqariga chiqsa, uni o'chirish
+                if (blocks[i].y > canvas.height) {
+                    blocks.splice(i, 1);
+                    i--; // Indeksni to'g'rilash
+                    score++; // Ballni oshirish
+                    scoreDisplay.textContent = `Ball: ${score}`;
+
+                    // Tezlik va paydo bo'lish tezligini vaqti-vaqti bilan oshirish
+                    if (score % 10 === 0 && blockSpeed < 10) {
+                        blockSpeed += 0.5;
+                        if (blockSpawnRate > 30) { // Minimal spawn rate
+                            blockSpawnRate -= 5;
+                        }
+                    }
+                }
+            }
+        }
+
+        // To'qnashuvni tekshirish
+        function checkCollision() {
+            for (let i = 0; i < blocks.length; i++) {
+                const block = blocks[i];
+                // AABB (Axis-Aligned Bounding Box) to'qnashuvni aniqlash
+                if (player.x < block.x + block.width &&
+                    player.x + player.width > block.x &&
+                    player.y < block.y + block.height &&
+                    player.y + player.height > block.y) {
+                    // To'qnashuv aniqlandi, o'yin tugadi
+                    endGame();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // O'yinni tugatish funksiyasi
+        function endGame() {
+            gameRunning = false;
+            gameOverScreen.style.display = 'flex'; // Tugash ekranini ko'rsatish
+            finalScoreDisplay.textContent = `Sizning ballingiz: ${score}`;
+
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('highScore', highScore); // Yangi eng yuqori ballni saqlash
+                highScoreDisplay.textContent = `Eng Yuqori Ball: ${highScore}`;
+            }
+        }
+
+        // O'yin sikli
+        function gameLoop() {
+            if (!gameRunning) return;
+
+            // Canvasni tozalash
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // O'yinchini chizish
+            drawPlayer();
+
+            // Bloklarni yangilash va chizish
+            updateBlocks();
+            blocks.forEach(drawBlock);
+
+            // To'qnashuvni tekshirish
+            checkCollision();
+
+            frameCount++;
+            requestAnimationFrame(gameLoop); // Keyingi kadrni so'rash
+        }
+
+        // Klaviatura hodisalari
+        document.addEventListener('keydown', (e) => {
+            if (!gameRunning) return;
+
+            const playerSpeed = 10; // O'yinchi harakat tezligi
+            if (e.key === 'ArrowLeft' || e.key === 'a') {
+                player.x -= playerSpeed;
+            } else if (e.key === 'ArrowRight' || e.key === 'd') {
+                player.x += playerSpeed;
+            }
+
+            // O'yinchini canvas chegaralarida ushlab turish
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+        });
+
+        // Mobil qurilmalar uchun sensorli boshqaruv
+        let touchStartX = 0;
+        canvas.addEventListener('touchstart', (e) => {
+            if (!gameRunning) return;
+            touchStartX = e.touches[0].clientX;
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (!gameRunning) return;
+            const touchCurrentX = e.touches[0].clientX;
+            const deltaX = touchCurrentX - touchStartX;
+            const touchSpeed = 0.5; // Sensorli harakat tezligi
+
+            player.x += deltaX * touchSpeed;
+
+            // O'yinchini canvas chegaralarida ushlab turish
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+
+            touchStartX = touchCurrentX; // Keyingi harakat uchun joriy pozitsiyani yangilash
+        });
+
+
+        // O'lcham o'zgarganda canvasni moslashtirish
+        window.addEventListener('resize', resizeCanvas);
+
+        // Qayta o'ynash tugmasini bosish hodisasi
+        restartButton.addEventListener('click', startGame);
+
+        // O'yinni yuklashda boshlash
+        window.onload = startGame;
+    </script>
+</body>
+</html>

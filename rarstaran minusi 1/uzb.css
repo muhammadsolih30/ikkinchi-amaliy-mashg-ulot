@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #fff8f0;
+  color: #333;
+}
+
+header {
+  background: #d94747;
+  color: white;
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  padding: 100px 10%;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.2rem;
+}
+
+.menu {
+  padding: 80px 10%;
+  background: #fff;
+}
+.menu h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+}
+.menu .grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.menu .card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: 0.3s;
+  padding-bottom: 10px;
+}
+.menu .card:hover {
+  transform: translateY(-5px);
+}
+.menu .card img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  box-shadow: inset 0 -8px 20px rgba(0, 0, 0, 0.2);
+}
+.menu .card .text {
+  padding: 16px;
+  text-align: center;
+}
+.menu .card .text h3 {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+.menu .card .text p {
+  font-weight: bold;
+  color: #d94747;
+}
+
+.special {
+  background: linear-gradient(135deg, #ffe5e5, #fff1f1);
+  padding: 60px 10%;
+  text-align: center;
+}
+.special h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.special p {
+  font-size: 1.2rem;
+  color: #d94747;
+  font-weight: bold;
+}
+
+.contact {
+  padding: 60px 10%;
+  text-align: center;
+}
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.contact p {
+  margin-bottom: 6px;
+}
+
+footer {
+  background: #d94747;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}/*# sourceMappingURL=uzb.css.map */

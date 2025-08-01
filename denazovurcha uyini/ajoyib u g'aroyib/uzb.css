@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    background: #000022;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 10px;
+  }
+  
+  #gameArea {
+    position: relative;
+    width: 100vw;
+    height: 85vh;
+    border-top: 2px solid white;
+    overflow: hidden;
+    background: radial-gradient(#001, #000);
+  }
+  
+  .word {
+    position: absolute;
+    color: #00ffff;
+    font-size: 24px;
+    white-space: nowrap;
+  }
+  
+  #typedText {
+    font-size: 24px;
+    margin-top: 10px;
+    color: yellow;
+    letter-spacing: 2px;
+    height: 30px;
+  }
+  

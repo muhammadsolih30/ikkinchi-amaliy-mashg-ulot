@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dino Game Clone</title>
+  <style>
+    body { background: white; margin: 0; overflow: hidden; }
+    #game {
+      width: 800px;
+      height: 200px;
+      border: 2px solid black;
+      position: relative;
+      background-color: #f0f0f0;
+    }
+    #dino {
+      width: 40px;
+      height: 40px;
+      background-color: green;
+      position: absolute;
+      bottom: 0;
+      left: 50px;
+    }
+    .obstacle {
+      width: 20px;
+      height: 40px;
+      background-color: red;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="game">
+    <div id="dino"></div>
+  </div>
+
+  <script>
+    const dino = document.getElementById("dino");
+    const game = document.getElementById("game");
+    let jumping = false;
+    let jumpHeight = 0;
+    let score = 0;
+    const maxScore = 5000; // 5 sekund davom etadi
+
+    function jump() {
+      if (jumping) return;
+      jumping = true;
+      let up = setInterval(() => {
+        if (jumpHeight >= 80) {
+          clearInterval(up);
+          let down = setInterval(() => {
+            if (jumpHeight <= 0) {
+              clearInterval(down);
+              jumping = false;
+            } else {
+              jumpHeight -= 5;
+              dino.style.bottom = jumpHeight + "px";
+            }
+          }, 20);
+        } else {
+          jumpHeight += 5;
+          dino.style.bottom = jumpHeight + "px";
+        }
+      }, 20);
+    }
+
+    function createObstacle() {
+      const obstacle = document.createElement("div");
+      obstacle.classList.add("obstacle");
+      obstacle.style.right = "0px";
+      game.appendChild(obstacle);
+
+      let move = setInterval(() => {
+        let right = parseInt(obstacle.style.right);
+        obstacle.style.right = right + 5 + "px";
+
+        // Dinozavrga urildimi?
+        let obstacleLeft = game.offsetWidth - (right + 20);
+        if (obstacleLeft < 90 && obstacleLeft > 50 && jumpHeight < 40) {
+          alert("GAME OVER!");
+          clearInterval(move);
+          location.reload();
+        }
+
+        // Obstacle o‘tdimi?
+        if (right > game.offsetWidth) {
+          clearInterval(move);
+          game.removeChild(obstacle);
+        }
+      }, 20);
+    }
+
+    document.addEventListener("keydown", e => {
+      if (e.code === "Space") jump();
+    });
+
+    // Har 1.5 sekundda to‘siq chiqadi
+    setInterval(createObstacle, 1500);
+
+    // O‘yin tugashini tekshir
+    let timer = setInterval(() => {
+      score += 100;
+      if (score >= maxScore) {
+        alert("YOU WIN!");
+        clearInterval(timer);
+        location.reload();
+      }
+    }, 100);
+  </script>
+</body>
+</html>

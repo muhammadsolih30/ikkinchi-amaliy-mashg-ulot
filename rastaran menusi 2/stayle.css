@@ -1,0 +1,303 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.header {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .container .logo h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin: 0;
+}
+.header .container .nav ul {
+  display: flex;
+  list-style: none;
+}
+.header .container .nav ul li {
+  margin-left: 2rem;
+}
+.header .container .nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+.header .container .nav ul li a:hover {
+  color: #d4a373;
+}
+.header .container .menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+.hero .hero-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+.hero .hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.hero .hero-content .btn {
+  background: #d4a373;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+.hero .hero-content .btn:hover {
+  background: #c8894c;
+}
+
+.menu {
+  padding: 5rem 0;
+  background: #f8f4e9;
+}
+.menu h2 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.menu .menu-filters {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.menu .menu-filters .filter-btn {
+  background: #fff;
+  border: 1px solid #d4a373;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+.menu .menu-filters .filter-btn.active, .menu .menu-filters .filter-btn:hover {
+  background: #d4a373;
+  color: #fff;
+}
+.menu .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.menu .menu-grid .menu-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+.menu .menu-grid .menu-item:hover {
+  transform: translateY(-5px);
+}
+.menu .menu-grid .menu-item img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.menu .menu-grid .menu-item h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  margin: 1rem 0 0.5rem;
+}
+.menu .menu-grid .menu-item p {
+  font-size: 0.9rem;
+  padding: 0 1rem;
+  color: #666;
+}
+.menu .menu-grid .menu-item .price {
+  display: block;
+  font-weight: bold;
+  color: #d4a373;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+.menu .menu-grid .menu-item.hidden {
+  display: none;
+}
+
+.gallery {
+  padding: 5rem 0;
+}
+.gallery h2 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.gallery .swiper-container {
+  padding-bottom: 3rem;
+}
+.gallery .swiper-container .swiper-slide img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.gallery .swiper-container .swiper-button-next, .gallery .swiper-container .swiper-button-prev {
+  color: #d4a373;
+}
+.gallery .swiper-container .swiper-pagination-bullet-active {
+  background: #d4a373;
+}
+
+.about {
+  padding: 5rem 0;
+  background: #f8f4e9;
+}
+.about h2 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #666;
+}
+
+.reservation {
+  padding: 5rem 0;
+}
+.reservation h2 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.reservation .reservation-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.reservation .reservation-form input, .reservation .reservation-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+.reservation .reservation-form input[type=date], .reservation .reservation-form input[type=time], .reservation .reservation-form input[type=number] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.reservation .reservation-form textarea {
+  height: 120px;
+  resize: vertical;
+}
+.reservation .reservation-form .btn {
+  background: #d4a373;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+.reservation .reservation-form .btn:hover {
+  background: #c8894c;
+}
+
+.footer {
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .header .nav {
+    display: none;
+  }
+  .header .nav.active {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #1a1a1a;
+    padding: 1rem 0;
+  }
+  .header .nav.active ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .header .nav.active ul li {
+    margin: 0.5rem 0;
+  }
+  .header .menu-toggle {
+    display: block;
+  }
+  .hero .hero-content h1 {
+    font-size: 2.8rem;
+  }
+  .hero .hero-content p {
+    font-size: 1.2rem;
+  }
+  .hero .hero-content .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  .menu .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery .swiper-slide img {
+    height: 200px;
+  }
+}/*# sourceMappingURL=stayle.css.map */
